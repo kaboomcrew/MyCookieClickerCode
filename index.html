@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="icon" type="image/x-icon" href="cookie.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Cookie Clicker</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+  <style>
+    html {
+      background-color: steelblue;
+    }
+    .earn {
+      width: 75%;
+      height: 200px;
+      border-radius: 70px;
+      border-style: solid;
+      border-color: black;
+      border-width: 5px;
+      background-color: deepskyblue;
+      color: white;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-size: 250%;
+      -webkit-text-stroke-color: black;
+      -webkit-text-stroke-width: 1px;
+    }
+    .sec {
+      float:left;
+      background-color: lightgray;
+      height: 265px;
+      width: 45%;
+      border-style: solid;
+      border-radius: 1px;
+      border-color: black;
+      border-radius: 50px;
+      background-color: white;
+    }
+    .montext {
+      color: white;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-size: 25px;
+      -webkit-text-stroke-color: black;
+      -webkit-text-stroke-width: 1px;
+    }
+    .h1text {
+      height: 150px;
+      width: 99%;
+      background-color: white;
+      border-radius: 100px;
+      border-style: solid;
+      border-color: black;
+      border-width: 10px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    .upgrades {
+      float: right;
+      width: 45%;
+      height: 150px;
+    }
+    .upgratesection {
+      height: 550px;
+      width: 75%;
+      background-color: white;
+      border-radius: 58px;
+      border-style: solid;
+      border-width: 5px;
+    }
+    .idleinc {
+      margin-top: 15px;
+      float: left;
+      height: 300px;
+      margin-right: 50%;
+      width: 50%;
+      background-color: white;
+      border-radius: 58px;
+      border-style: solid;
+      border-width: 5px;
+
+    }
+    .cpsbuttons {
+      background-color: deepskyblue;
+      margin-left: 10px;
+      height: 100px;
+      width: 93%;
+      background-image: url(cookie.png);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      border-radius: 50px;
+      border-style: solid;
+      border-color: black;
+    }
+    
+  </style>
+<body>
+  <script>var money = 0;
+  var cpc = 1;
+  var moneyreq1 = 10;
+  var moneyreq2 = 100;
+  var moneyreq3 = 1000;
+  var moneypersec = 0;
+  var idleval1 = 10;
+  var idleval2 = 100;
+
+
+  function plusmoney() {
+    money += cpc;
+    document.getElementById('money').innerHTML = String(money);
+    var button = document.getElementById('earn');
+    button.style.width = '70%';
+    button.style.height = '190px';
+    setTimeout(() => {  
+      button.style.width = '75%';   
+      button.style.height = '200px';
+    }, 100);
+  }
+
+  function cpclvlup1() {
+    if (money >= moneyreq1) {
+      money -= moneyreq1;
+      cpc += 1;
+      document.getElementById('cpc').innerHTML = String(cpc);
+      moneyreq1 += 10;
+      document.getElementById('money').innerHTML = String(money);
+      document.getElementById('upgad1').innerHTML = 'Upgrade + 1 cpc $' + String(moneyreq1);
+    } else if (money < moneyreq1) {
+      document.getElementById('upgad1').innerHTML = 'Not Enough Money!';
+      setTimeout(() => {   
+        document.getElementById('upgad1').innerHTML = 'Upgrade + 1 cpc $' + String(moneyreq1);
+      }, 500);
+    }
+  }
+
+  function cpclvlup2() {
+    if (money >= moneyreq2) {
+      money -= moneyreq2;
+      cpc += 10;
+      document.getElementById('cpc').innerHTML = String(cpc);
+      moneyreq2 += 100;
+      document.getElementById('money').innerHTML = String(money);
+      document.getElementById('upgad2').innerHTML = 'Upgrade + 10 cpc $' + String(moneyreq2);
+    } else if (money < moneyreq2) {
+      document.getElementById('upgad2').innerHTML = 'Not Enough Money!';
+      setTimeout(() => {   
+        document.getElementById('upgad2').innerHTML = 'Upgrade + 10 cpc $' + String(moneyreq2);
+      }, 500);
+    }
+  }
+
+  function cpclvlup3() {
+    if (money >= moneyreq3) {
+      money -= moneyreq3;
+      cpc += 100;
+      document.getElementById('cpc').innerHTML = String(cpc);
+      moneyreq3 += 1000;
+      document.getElementById('money').innerHTML = String(money);
+      document.getElementById('upgad3').innerHTML = 'Upgrade + 100 cpc $' + String(moneyreq3);
+    } else if (money < moneyreq3) {
+      document.getElementById('upgad3').innerHTML = 'Not Enough Money!';
+      setTimeout(() => {   
+        document.getElementById('upgad3').innerHTML = 'Upgrade + 100 cpc $' + String(moneyreq3);
+      }, 500);
+    }
+  }
+
+  function BuyCPSupgrade1() {
+    if (idleval1 <= money) {
+      money -= idleval1
+      idleval1 += 10;
+      moneypersec += 1;
+      document.getElementById("iiu1p").innerHTML = idleval1;
+      document.getElementById("money").innerHTML = money;
+    }
+    else if (money < moneyreq3) {
+      document.getElementById('cps1').innerHTML = 'Not Enough Money!';
+      setTimeout(() => {   
+        document.getElementById('cps1').innerHTML = 'Idle Cookies + 1, $' + String(idleval1);
+    }, 500);
+    }
+  }
+
+  function BuyCPSupgrae2() {
+    if (idleval2 <= money) {
+      money -= idleval2
+      idleval2 += 100;
+      moneypersec += 10;
+      document.getElementById("iiu2p").innerHTML = idleval2;
+      document.getElementById("money").innerHTML = money;
+    }
+    else if (money < moneyreq3) {
+      document.getElementById('cps2').innerHTML = 'Not Enough Money!';
+      setTimeout(() => {   
+        document.getElementById('cps2').innerHTML = 'Idle Cookies + 10, $' + String(idleval2);
+    }, 500);
+    }
+  }
+
+  function updatemoney() {
+    document.getElementById("CookiesPerSec").innerHTML = moneypersec;
+    money += moneypersec; // Increase money by moneypersec every second
+    document.getElementById('money').innerHTML = String(money);
+  }
+
+
+  function startmoneyupdate() {
+    setInterval(updatemoney, 1000);
+  }
+
+  startmoneyupdate();
+</script>
+  <section class="h1text">
+    <h1  id="maintitle" style=" color: orange; text-align: center; margin-top: 50px; font-size: 3em; -webkit-text-stroke-color: black; -webkit-text-stroke-width: 2px;">
+      COOKIE CLICKER
+    </h1>
+  </section>
+  <br>
+  <section class="sec">
+    <div class="montext" style="padding-left: 70px; padding-top: 10px;">
+      <a>Money: </a><a id="money">0</a>
+    </div>
+    <br>
+    <div>
+      <button id="earn" style="margin-left: 10%; background-image: url(cookie.png);" class="earn" onclick=plusmoney()>Earn Cookies</button>
+    </div>
+  </section>
+  <br>
+  <br>
+  <div class="upgrades">
+    <section class="upgratesection">
+      <a class="montext" style="text-align: center; padding-left: 25px; font-size: 1.5em;">Cookies Per Click: <a id="cpc" class="montext"></a></a>
+      <br> <br>
+      <button style=" background-color: deepskyblue; width: 100%; height: 100px; border-radius: 50px; border-style:solid; border-width: 5px; background-image: url(cookie.png); font-size: 1em; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" class="upbut1"  id="upgad1" onclick=cpclvlup1()>Upgrade + 1 cpc $<a id="lvlup1">10</a></button>
+      <br>
+      <br>
+      <button style="background-color: deepskyblue;width: 100%; height: 100px; border-radius: 50px; border-style:solid; border-width: 5px; background-image: url(cookie.png); font-size: 1em; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" class="upbut1"  id="upgad2" onclick=cpclvlup2()>Upgrade + 10 cpc $<a>100</a></button>
+      <br> <br>
+      <button style=" background-color: deepskyblue; width: 100%; height: 100px; border-radius: 50px; border-style:solid; border-width: 5px; background-image: url(cookie.png); font-size: 1em; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" class="upbut1"  id="upgad3" onclick=cpclvlup3()>Upgrade + 100 cpc $<a>1000</a></button>
+      <p style="text-align: center; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Made By Kaboomcrew :)</p>
+    </section>
+  </div>
+  <section class="idleinc">
+    <a class="montext" style="text-align: center; padding-left: 25px; font-size: 1.5em;">Cookies Per Second: <a id="CookiesPerSec" class="montext">
+    </a></a>
+    <br>
+    <button id="cps1" onclick=BuyCPSupgrade1() class="cpsbuttons">Idle Cookies +1, $<a id="iiu1p">10</a></button>
+    <br> <br> <br>
+    <button id="cps2" onclick=BuyCPSupgrae2() class="cpsbuttons">Idle Cookies + 10, $<a id="iiu2p">100</a></button>
+     
+  </section>
+</body>
+
+</html>
